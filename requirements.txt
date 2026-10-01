@@ -1,0 +1,10 @@
+# Requirements
+
+Use this file to install the core Python dependencies for the exercises in this repo.
+
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+pytest

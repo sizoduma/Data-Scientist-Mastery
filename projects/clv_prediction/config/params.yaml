@@ -1,0 +1,32 @@
+# Configuration file for hyperparameters and experiment settings
+
+data:
+  raw_path: "data/raw/"
+  processed_path: "data/processed/"
+  train_split: 0.8
+  random_state: 42
+
+features:
+  rfm: true  # Recency, Frequency, Monetary
+  temporal: true  # Time-based aggregations
+  behavioral: true  # Purchase patterns
+  seasonal: true  # Seasonal indicators
+
+model:
+  algorithm: "gradient_boosting"  # Options: linear, tree, gb, nn
+  hyperparams:
+    n_estimators: 100
+    max_depth: 6
+    learning_rate: 0.1
+  
+validation:
+  method: "time_series_split"  # Respect temporal order
+  n_splits: 5
+  business_metric: "precision_at_20pct"  # Top 20% should capture 50%+ of high CLV
+
+evaluation:
+  metrics:
+    - "rmse"
+    - "mae"
+    - "precision_at_k"
+    - "lift"
